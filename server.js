@@ -11,6 +11,18 @@ app.get('/api/people', (req, res, next) => {
     .catch(next)
 })
 
+app.get('/api/places', (req, res, next) => {
+  Places.findAll()
+    .then( places => res.send(places))
+    .catch(next)
+})
+
+app.get('/api/things', (req, res, next) => {
+  Things.findAll()
+    .then( things => res.send(things))
+    .catch(next)
+})
+
 
 db.syncAndSeed()
   .then(() => {
