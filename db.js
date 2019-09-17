@@ -69,4 +69,11 @@ const syncAndSeed = async() => {
 
 }
 
-syncAndSeed()
+module.exports = {
+  syncAndSeed,
+  models : {
+    People,
+    Places,
+    Things
+  }
+}
