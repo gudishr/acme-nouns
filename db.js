@@ -45,4 +45,28 @@ const Things = conn.define('things', {
   }
 })
 
-conn.sync({ force : true })
+const syncAndSeed = async() => {
+  await conn.sync({ force : true })
+  const people = [
+    { name : 'Shruti' },
+    { name : 'Gudi' },
+    { name : 'Jay' },
+  ]
+  const places = [
+    { name : 'Fremont' },
+    { name : 'Bangalore' },
+    { name : 'Mumbai' },
+  ]
+  const things = [
+    { name : 'Book' },
+    { name : 'Laptop' },
+    { name : 'Pen' },
+  ]
+
+  await Promise.all(people.map(person => People.create(person)))
+  await Promise.all(places.map(place => Places.create(place)))
+  await Promise.all(things.map(thing => Things.create(thing)))
+
+}
+
+syncAndSeed()
